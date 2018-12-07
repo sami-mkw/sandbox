@@ -10,6 +10,8 @@
 apply plugin: 'java-library'
 apply plugin: 'war'
 apply plugin: 'eclipse-wtp'
+apply plugin: 'findbugs'
+apply plugin: 'checkstyle'
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -30,3 +32,18 @@ dependencies {
 
     compileOnly 'javax.servlet:javax.servlet-api:3.1.0'
 }
+
+findbugs {
+  ignoreFailures = true
+ }
+
+tasks.withType(FindBugs) {
+    reports {
+        xml.enabled = false // これを書くとXML出力を止めることができる
+        html.enabled = true
+    }
+}
+
+checkstyle {
+  ignoreFailures = true
+ }

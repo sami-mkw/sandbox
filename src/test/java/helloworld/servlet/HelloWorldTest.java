@@ -30,9 +30,10 @@ public class HelloWorldTest {
 			String message = (String)req.getAttribute("message");
 			assertThat(message, containsString("現在の時刻は ["));
 			assertThat(message, containsString("] です。"));
+			assertEquals("/WEB-INF/jsp/index.jsp",res.getForwardedUrl());
 
 		} catch (ServletException | IOException e) {
-			assertTrue(false);
+			e.printStackTrace();
 		}
 	}
 

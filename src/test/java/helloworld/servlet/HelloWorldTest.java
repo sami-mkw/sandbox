@@ -6,10 +6,6 @@ package helloworld.servlet;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
-
 import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
@@ -31,8 +27,7 @@ public class HelloWorldTest {
 			assertThat(message, containsString("現在の時刻は ["));
 			assertThat(message, containsString("] です。"));
 			assertEquals("/WEB-INF/jsp/index.jsp",res.getForwardedUrl());
-
-		} catch (ServletException | IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
